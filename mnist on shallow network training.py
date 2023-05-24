@@ -45,7 +45,7 @@ class Dataset_MNIST:
 
 
 
-# Creating the shallow architecture wiht one hidden layer
+# Creating the shallow architecture with one hidden layer
 class NeuralNet(nn.Module):
     def __init__(self, input_size, hidden_size, num_classes):
         super(NeuralNet, self).__init__()
