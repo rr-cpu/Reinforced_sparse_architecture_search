@@ -7,5 +7,5 @@ Reinforced Sparse Architecture is an unstructured iterative pruning approach whe
 
 We have performed experimentation using shallow network on MNIST and SVHN and using Resnet18 and VGG16 on Cifar10 and Cifar100 datasets. We have used the pytorch framework for our implementation. We have used the prune module of Pytorch for creating masks which will act as pre-hook during training. For updating the architecture, we update the pre-hook mask.
 
-For reproducing the results, download the files and run the .py files corresponding to the model and dataset name you wish to train. The hyperparameters are all preset to the values mentioned in the paper. Make sure the sparsity_module.py file is in same folder as your main running file since it contains the fit_sparse() fuction to train the sparse model.
+For reproducing the results, download the files and run the .py files corresponding to the model and dataset name you wish to train. The hyperparameters are all preset to the values mentioned in the paper. Make sure the [sparsity_module.py](sparsity_module.py) file is in same folder as your main running file since it contains the fit_sparse() fuction to train the sparse model.
           
