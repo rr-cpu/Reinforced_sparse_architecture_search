@@ -1,15 +1,62 @@
-# Reinforced Sparse Architecture Search
-This repository contains the code for the paper titled "Reinforced Sparse Architecture Search" submitted to NeurIPS 2023 conference.
+>📋  A template README.md for code accompanying a Machine Learning paper
 
-![Screenshot from 2023-05-13 16-01-55](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/assets/56760930/c56d3073-0221-4375-b3a7-e65a245b8385)
+# My Paper Title
 
-Reinforced Sparse Architecture is an unstructured iterative pruning approach where pruning is performed based on the measure_value that is used as a importance metric for the parameters. The measure_value is learned during training. Please refer to the paper for more details.
+This repository is the official implementation of [My Paper Title](https://arxiv.org/abs/2030.12345). 
 
-We have performed experimentation using shallow network on [MNIST](MNIST_on_shallow_network.py) and [SVHN](SVHN_on_shallow_network.py) and using Resnet18 and VGG16 on Cifar10 and Cifar100 datasets. We have used the pytorch framework for our implementation. We have used the prune module of Pytorch for creating masks which will act as pre-hook during training. For updating the architecture, we update the pre-hook mask.
-## Reproducing Results
-For reproducing the results, download the files and run the .py files corresponding to the model and dataset name you wish to train. The hyperparameters are all preset to the values mentioned in the paper. Make sure the [sparsity_module.py](sparsity_module.py) file is in same folder as your main running file since it contains the [fit_sparse()](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/blob/main/sparsity_module.py#L20) fuction to train the sparse model.
-## Applying to new model        
-For applying our method on some other model, you may download the [sparsity_module.py](sparsity_module.py) file and import the class [Sparse_learn](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/blob/main/sparsity_module.py#L16)  from it to your main file. Create a class variable for [Sparse_learn](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/blob/main/sparsity_module.py#L16) and call the function [fit_sparse](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/blob/main/sparsity_module.py#L20) and pass the model, dataset, epochs, learning rate, device being used and optimization function as arguments. By deault the optimization function is SGD. Make sure the Dataset be a class object with train_loader and test_loader as class variables as given in the other .py files. One can try out different sparsity values by changing [sparsity_value](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/blob/main/sparsity_module.py#L20) in range \[0,1) where 0 means zero percent sparsity and 1 means 100% sparsity.
+>📋  Optional: include a graphic explaining your approach/main result, bibtex entry, link to demos, blog posts and tutorials
 
-Note: [sparsity_module.py](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/blob/main/sparsity_module.py) and [sparsity_module_v1.py](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/blob/main/sparsity_module_v1.py) are same except for a slight change in condition for selection of layers from [named_parameters()](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/blob/main/sparsity_module_v1.py#L23). Since we are selecting only the convolution and linear layers for pruning, this change is required in case of Resnet, else it will select batch normalization and downsampling layers also. 
+## Requirements
 
+To install requirements:
+
+```setup
+pip install -r requirements.txt
+```
+
+>📋  Describe how to set up the environment, e.g. pip/conda/docker commands, download datasets, etc...
+
+## Training
+
+To train the model(s) in the paper, run this command:
+
+```train
+python train.py --input-data <path_to_data> --alpha 10 --beta 20
+```
+
+>📋  Describe how to train the models, with example commands on how to train the models in your paper, including the full training procedure and appropriate hyperparameters.
+
+## Evaluation
+
+To evaluate my model on ImageNet, run:
+
+```eval
+python eval.py --model-file mymodel.pth --benchmark imagenet
+```
+
+>📋  Describe how to evaluate the trained models on benchmarks reported in the paper, give commands that produce the results (section below).
+
+## Pre-trained Models
+
+You can download pretrained models here:
+
+- [My awesome model](https://drive.google.com/mymodel.pth) trained on ImageNet using parameters x,y,z. 
+
+>📋  Give a link to where/how the pretrained models can be downloaded and how they were trained (if applicable).  Alternatively you can have an additional column in your results table with a link to the models.
+
+## Results
+
+Our model achieves the following performance on :
+
+### [Image Classification on ImageNet](https://paperswithcode.com/sota/image-classification-on-imagenet)
+
+| Model name         | Top 1 Accuracy  | Top 5 Accuracy |
+| ------------------ |---------------- | -------------- |
+| My awesome model   |     85%         |      95%       |
+
+>📋  Include a table of results from your paper, and link back to the leaderboard for clarity and context. If your main result is a figure, include that figure and link to the command or notebook to reproduce it. 
+
+
+## Contributing
+
+>📋  Pick a licence and describe how to contribute to your code repository. 
