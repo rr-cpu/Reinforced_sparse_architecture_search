@@ -31,7 +31,7 @@ class Sparse_learn:
     #     Initialize the measure values to 0
         measure_value={}
         for i,_ in model.named_parameters():
-            if("weight" in i) and ("mask" not in i) and (('conv' in i) or ('fc' in i)):
+            if("weight" in i) and ("mask" not in i):
                 measure_value[i]=torch.zeros(model.state_dict()[i].size()).to(device)
 
     #     Training Phase
@@ -49,7 +49,7 @@ class Sparse_learn:
                 loss_previous=loss.item()
     #           value updation for each layer
                 for l,_ in model.named_parameters():
-                    if('weight' in l) and ('mask' not in l) and (('conv' in l) or ('fc' in l)):
+                    if('weight' in l) and ('mask' not in l):
                         mask=dict(model.named_buffers())[l.replace('orig','mask')]
                         measure_value[l].add_(mask, alpha=0.01*loss_change)
     #           update the weights
@@ -57,7 +57,7 @@ class Sparse_learn:
     #           update the sparse architecture
                 if i%10==0 and epoch<epochs-1:
                     for l,_ in model.named_parameters():
-                        if('weight' in l) and ('mask' not in l) and (('conv' in l) or ('fc' in l)):
+                        if('weight' in l) and ('mask' not in l):
                             mask=dict(model.named_buffers())[l.replace('orig','mask')]
                             mask[:,:]=1
                             neurons_count=math.floor((torch.numel(mask)*(1-sparsity_value)))
@@ -72,7 +72,7 @@ class Sparse_learn:
                                 mask[::]=torch.nn.utils.prune.RandomUnstructured(amount=(torch.numel(mask)-neurons_count)).prune(mask)
                 elif(epoch==epochs-1 and i==0):
                     for l,_ in model.named_parameters():
-                        if('weight' in l) and ('mask' not in l) and (('conv' in l) or ('fc' in l)):
+                        if('weight' in l) and ('mask' not in l):
                             mask=dict(model.named_buffers())[l.replace('orig','mask')]
                             mask[:,:]=0
                             neurons_count=math.floor((torch.numel(mask)*(1-sparsity_value)))
