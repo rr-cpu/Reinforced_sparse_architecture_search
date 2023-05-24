@@ -9,3 +9,5 @@ We have performed experimentation using shallow network on [MNIST](MNIST_on_shal
 
 For reproducing the results, download the files and run the .py files corresponding to the model and dataset name you wish to train. The hyperparameters are all preset to the values mentioned in the paper. Make sure the [sparsity_module.py](sparsity_module.py) file is in same folder as your main running file since it contains the fit_sparse() fuction to train the sparse model.
           
+For applying our method on some other model, you may download the [sparsity_module.py](sparsity_module.py) file and import the class [Sparse_learn](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/blob/main/sparsity_module.py#L16)  from it to your main file. Create a class variable for [Sparse_learn](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/blob/main/sparsity_module.py#L16) and call the function [fit_sparse](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/blob/main/sparsity_module.py#L20) and pass the model, dataset, epochs, learning rate, device being used and optimization function as arguments. by deault the optimization function is SGD.
+
