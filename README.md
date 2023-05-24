@@ -1,7 +1,8 @@
 # Reinforced Sparse Architecture Search
 This repository contains the code for the paper titled "Reinforced Sparse Architecture Search" submitted to NeurIPS 2023 conference.
 
-![Screenshot from 2023-05-13 16-01-55](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/assets/56760930/c56d3073-0221-4375-b3a7-e65a245b8385)
+
+![Screenshot from 2023-05-13 16-01-55](https://github.com/rr-cpu/Reinforced_sparse_architecture_search/assets/56760930/fbc65656-b4c3-4571-bcb3-276493ea6e14)
 
 Reinforced Sparse Architecture is an unstructured iterative pruning approach where pruning is performed based on the measure_value that is used as a importance metric for the parameters. The measure_value is learned during training. Please refer to the paper for more details.
 
