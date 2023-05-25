@@ -9,7 +9,6 @@ import numpy as np
 import math
 from torch.nn.utils import prune 
 import pandas as pd
-import pickle
 from sparsity_module import Sparse_learn
 get_ipython().run_line_magic('matplotlib', 'inline')
 
